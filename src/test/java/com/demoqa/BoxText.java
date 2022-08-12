@@ -2,6 +2,7 @@ package com.demoqa;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.selector.ByText;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,7 +29,6 @@ public class BoxText {
         $("[id=lastName]") .setValue("Semenov");
         $("[id=userEmail]") .setValue("semen@ae.ru");
         $("[id=userNumber]") .setValue("1234567891");
-        $("[id=submit]") .click();
         $(byText("Male")).click();
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("March");
@@ -36,6 +36,14 @@ public class BoxText {
         $("[aria-label$='March 13th, 1990']").click();
         $("[id=subjectsInput]") .setValue("Physics") .pressEnter();
         $(byText("Sports")).click();
+        $("[id=uploadPicture") .uploadFromClasspath("src/test/resources/2,13.png");
+        $("[id=currentAddress]") .setValue("Moscow street 15");
+        $("[id=stateCity-wrapper]") .click();
+        $(byText("NCR")) .click();
+        $("[id=city]") .click();
+        $(byText("Noida")) .click();
+        $("[id=submit]") .click();
+
 
 
 
@@ -45,4 +53,5 @@ public class BoxText {
     void assertTest1() {
     }
 }
+
 
