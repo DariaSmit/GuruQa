@@ -1,11 +1,10 @@
 package com.demoqa;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.selector.ByText;
-import org.junit.jupiter.api.AfterEach;
+import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selectors.byText;
@@ -24,19 +23,25 @@ public class BoxText {
     @Test
     void fillFormTest() {
         Selenide.open("/automation-practice-form");
-// Пол мужской
-        $("[id=firstName]") .setValue("Semen");
-        $("[id=lastName]") .setValue("Semenov");
-        $("[id=userEmail]") .setValue("semen@ae.ru");
-        $("[id=userNumber]") .setValue("1234567891");
-        $(byText("Male")).click();
+//
+        String Firstname = "Semen";
+        String Lastname = "Semenov";
+        String UserEmail = "semen@ae.ru";
+        String Phone = "1234567891";
+        String Gender = "Male";
+
+        $("[id=firstName]") .setValue(Firstname);
+        $("[id=lastName]") .setValue(Lastname);
+        $("[id=userEmail]") .setValue(UserEmail);
+        $("[id=userNumber]") .setValue(Phone);
+        $(byText(Gender)).click();
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("March");
         $(".react-datepicker__year-select").selectOption("1990");
         $("[aria-label$='March 13th, 1990']").click();
         $("[id=subjectsInput]") .setValue("Physics") .pressEnter();
         $(byText("Sports")).click();
-        $("[id=uploadPicture") .uploadFromClasspath("src/test/resources/2,13.png");
+        $("[id=uploadPicture") .uploadFromClasspath("OMG.png");
         $("[id=currentAddress]") .setValue("Moscow street 15");
         $("[id=stateCity-wrapper]") .click();
         $(byText("NCR")) .click();
@@ -44,10 +49,15 @@ public class BoxText {
         $(byText("Noida")) .click();
         $("[id=submit]") .click();
 
-
-
-
+        //Проверка фактических результатов
+       $("[class=table-responsive").shouldHave(
+                Condition.text(Firstname),
+                Condition.text(Lastname),
+                Condition.text(UserEmail),
+                Condition.text(Phone));
     }
+
+
 
     @Test
     void assertTest1() {
