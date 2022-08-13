@@ -9,11 +9,12 @@ public class SimpleTests {
 
 
     @BeforeEach
-    void openPage(){
+    void openPage() {
         Selenide.open("https://demoqa.com/automation-practice-form");
     }
+
     @AfterEach
-    void close(){
+    void close() {
         Selenide.closeWindow();
     }
 
@@ -21,10 +22,5 @@ public class SimpleTests {
     void assertTest() {
         // открытие формы регистрации
     }
-
-    @Test
-    void assertTest1() {
-    }
 }
-
 
