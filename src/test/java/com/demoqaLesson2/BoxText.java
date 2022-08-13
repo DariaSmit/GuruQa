@@ -1,4 +1,4 @@
-package com.demoqaLession2;
+package com.demoqaLesson2;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
