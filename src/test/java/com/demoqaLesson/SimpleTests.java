@@ -1,4 +1,4 @@
-package com.demoqaLesson2;
+package com.demoqaLesson;
 
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterEach;
@@ -23,4 +23,3 @@ public class SimpleTests {
         // открытие формы регистрации
     }
 }
-
