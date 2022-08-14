@@ -36,41 +36,42 @@ public class Task3 {
             System.out.println("no");
         }
     switch (str){
-        case ("January"):
-            System.out.println(1+",12, 3");
-            break;
-        case ("February"):
-            System.out.println(2+",12,1");
-            break;
+
         case ("March"):
-            System.out.println(3+",4,5");
-            break;
+            System.out.println(3);
+
         case ("April"):
-            System.out.println(4+",3,5");
-            break;
+            System.out.println(4);
+
         case ("May"):
-            System.out.println(5+",4.,3");
+            System.out.println(5);
             break;
         case ("June"):
-            System.out.println(6+",7,8");
-            break;
+            System.out.println(6);
+
         case ("July"):
-            System.out.println(7+",6,8");
-            break;
+            System.out.println(7);
+
         case ("August"):
-            System.out.println(8+",7,6");
+            System.out.println(8);
             break;
         case ("September"):
-            System.out.println(9+",10,11");
-            break;
+            System.out.println(9);
+
         case ("October"):
-            System.out.println(10+",9,11");
-            break;
+            System.out.println(10);
+
         case ("November"):
-            System.out.println(11+",9,10");
+            System.out.println(11);
             break;
         case ("December"):
-            System.out.println(12+",1,2");
+            System.out.println(12);
+
+        case ("January"):
+            System.out.println(1);
+
+        case ("February"):
+            System.out.println(2);
             break;
         default:
             System.out.println("no");
