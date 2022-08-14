@@ -62,6 +62,7 @@ public class PracticeLesson1 {
 
             default:
                 System.out.println("no");
+
         }
 
     }
