@@ -1,4 +1,4 @@
-package com.demoqaLesson.utils;
+package utils;
 
 
     import com.github.javafaker.Faker;
