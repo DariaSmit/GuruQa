@@ -1,4 +1,4 @@
-package com.demoqaLesson;
+package com.demoqaLessonTest;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 
-public class RegistrationFormTest {
+public class RegistrationFormTestV1 {
     @BeforeAll
     static void setUp() {
         Configuration.holdBrowserOpen = true;
@@ -23,8 +23,9 @@ public class RegistrationFormTest {
 
     @Test
     void fillFormTest() {
-        Selenide.open("/automation-practice-form");
         // Testing the students registration form
+        Selenide.open("/automation-practice-form");
+
         Faker faker = new Faker();
         String firstName = faker.name().firstName(),
                 lastName = faker.name().firstName(),

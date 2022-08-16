@@ -1,4 +1,4 @@
-package com.demoqaLesson;
+package com.demoqaLessonTest;
 
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterEach;
