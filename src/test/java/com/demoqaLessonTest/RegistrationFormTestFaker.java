@@ -2,17 +2,17 @@ package com.demoqaLessonTest;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import com.github.javafaker.Faker;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 
-public class RegistrationFormTestV1 {
+public class RegistrationFormTestFaker {
     @BeforeAll
     static void setUp() {
         Configuration.holdBrowserOpen = true;
@@ -30,11 +30,11 @@ public class RegistrationFormTestV1 {
 
         Faker faker = new Faker();
         String firstName = faker.name().firstName(),
-                lastName = faker.name().firstName(),
+                lastName = faker.name().lastName(),
                 userEmail = faker.internet().emailAddress(),
-                phone = "1234567891",
+                phone = faker.numerify("##########"),
                 gender = "Male",
-                address = "Moscow street 15",
+                address = faker.address().fullAddress(),
                 picture = "OMG.png";
 
 
