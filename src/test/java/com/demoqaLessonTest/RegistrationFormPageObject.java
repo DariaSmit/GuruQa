@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationFormPage;
 
-
+@DisplayName("Класс с тестом формы регистрации")
 public class RegistrationFormPageObject {
     Faker faker = new Faker();
     String firstName = faker.name().firstName(),
