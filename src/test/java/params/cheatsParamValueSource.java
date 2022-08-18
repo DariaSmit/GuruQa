@@ -1,4 +1,4 @@
-package Param;
+package params;
 
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.params.ParameterizedTest;
