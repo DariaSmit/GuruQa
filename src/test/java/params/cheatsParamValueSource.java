@@ -1,6 +1,8 @@
 package params;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -13,6 +15,7 @@ public class cheatsParamValueSource {
     })
     @ParameterizedTest(name = "проверка поиска animestars по слову {0}")
     void ValueTest(String name) {
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
         Selenide.open("https://animestars.org/");
         $("#story").setValue(name).pressEnter();
