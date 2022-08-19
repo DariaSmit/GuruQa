@@ -2,6 +2,7 @@ package params;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,6 +19,11 @@ public class cheatsParamCsvSource {
             "Кармабазепин, Велфарм"
 
     })
+    @Owner("DariaSmit")
+    @Severity(SeverityLevel.MINOR)
+    @Feature("Тестинг параметризированный")
+    @Story("Тестинг Params CsvSource")
+
     @ParameterizedTest(name = "проверка слов {0} в поиске gorzdrav {1} ")
     void ParamYouTube(String testData, String resultS) {
         SelenideLogger.addListener("allure", new AllureSelenide());

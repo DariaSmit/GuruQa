@@ -1,6 +1,7 @@
 package params;
 
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -55,6 +56,11 @@ public class cheatsParam {
                 Arguments.of("second string", List.of(44.01))
         );
     }
+
+    @Owner("DariaSmit")
+    @Severity(SeverityLevel.MINOR)
+    @Feature("Тестинг параметризированный")
+    @Story("Тестинг Params")
 
     @MethodSource("methodSourceTest")
     @ParameterizedTest

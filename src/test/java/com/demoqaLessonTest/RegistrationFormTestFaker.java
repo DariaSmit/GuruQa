@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
+import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -25,6 +26,10 @@ public class RegistrationFormTestFaker {
         Configuration.browserSize = "1920x1080";
 
     }
+    @Owner("DariaSmit")
+    @Severity(SeverityLevel.MINOR)
+    @Feature("Тестинг PageObject и Faker")
+    @Story("Тестинг формы регистрации Faker")
 
     @Test
     @DisplayName("Testing the students registration form")

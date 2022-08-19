@@ -3,6 +3,7 @@ package com.demoqaLessonTest;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -25,6 +26,10 @@ public class RegistrationFormTestV1 {
         Configuration.browserSize = "1920x1080";
 
     }
+    @Owner("DariaSmit")
+    @Severity(SeverityLevel.MINOR)
+    @Feature("Тестинг Тестинг с PageObject и Faker")
+    @Story("Тестинг формы регистрации:чистый Selenide")
 
     @Test
     @DisplayName("Testing the students registration form")

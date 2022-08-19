@@ -3,6 +3,7 @@ package com.demoqaLessonTest;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
+import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -20,6 +21,7 @@ public class RegistrationFormPageObject {
 
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
+
     // строчка сверху должна находится в классе.
     @BeforeAll
     static void setUp() {
@@ -30,6 +32,10 @@ public class RegistrationFormPageObject {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
     }
+    @Owner("DariaSmit")
+    @Severity(SeverityLevel.MINOR)
+    @Feature("Тестинг с PageObject и Faker")
+    @Story("Тестинг формы регистрации PageObject")
 
     @Test
     @DisplayName("Testing the students registration form")
