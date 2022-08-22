@@ -19,7 +19,7 @@ public class AllureTest {
     @Owner("DariaSmit")
     @Severity(SeverityLevel.MINOR)
     @Feature("Тестинг с опциями Allure")
-    @Story("Сверка надписи в репозитории")
+    @Story("Тестинг c опциями Allure")
 
     @Test
     @DisplayName("тест с селенид GitHub")

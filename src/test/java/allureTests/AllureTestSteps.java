@@ -10,7 +10,6 @@ import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static org.openqa.selenium.By.linkText;
 
 public class AllureTestSteps {
     private static final String Repository = "AnastasiyaIlkevich/Bot";
@@ -19,7 +18,7 @@ public class AllureTestSteps {
     @Owner("DariaSmit")
     @Severity(SeverityLevel.MINOR)
     @Feature("Тестинг c опциями Allure")
-    @Story("Тестинг Params")
+    @Story("Тестинг c опциями Allure")
 
     @Test
     public void TestingAllureSteps(){
