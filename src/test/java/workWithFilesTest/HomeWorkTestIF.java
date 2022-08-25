@@ -1,14 +1,15 @@
-package workWithFiles;
+package workWithFilesTest;
 
 import com.codeborne.pdftest.PDF;
 import com.codeborne.pdftest.matchers.ContainsExactText;
 import com.codeborne.xlstest.XLS;
 import com.opencsv.CSVReader;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -19,11 +20,16 @@ import java.util.zip.ZipInputStream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
+@DisplayName("DownloadFiles")
 public class HomeWorkTestIF {
     ClassLoader cl = SelenideDownloadTest.class.getClassLoader();
     private String pdfName = "Guide.RU.pdf";
     String xlsxName = "sample-xlsx-file.xlsx";
     String csvName = "teachers.html";
+
+    @Owner("DariaSmit")
+    @Severity(SeverityLevel.MINOR)
+    @Feature("Тестинг загрузки и прверки файлов")
 
     @Test
     void checkFilesTest() throws Exception {

@@ -1,4 +1,4 @@
-package params;
+package paramsTest;
 
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Assertions;
@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public class testCase {
-    // @Disabled "codetools-0494848"//выключить тест до последующего фикса бага
+    @Disabled //"codetools-0494848"//выключить тест до последующего фикса бага
     @Test
     @DisplayName(" открытие формы регистрации")
     void firstTest() {
@@ -38,7 +38,7 @@ public class testCase {
         $(".serp-item").shouldHave(text("Selenide"));
         // Если меняются входные данные, а шаги остаются те же, то используется параметризованные тесты
     }
-
+    @Disabled
     @ParameterizedTest
     @DisplayName(" проверка поиска в Яндексе по словоу Selenide")
     void ParamTest(String testData) {

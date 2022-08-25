@@ -1,0 +1,193 @@
+Поиск элемента в списке:
+$$(".url-list").first.click();
+
+F8 при работе с дом ставит на паузу браузер для удобства поиска скрывающихся элементов
+Сон
+sleep(5000)
+
+Структура тестов
+Arrange - ACT - Assert триплЭй
+подготовка - шаги - проверки
+GIVEN - WHEN - THEN
+
+filterBy и FindBy искать из списка элементов например по visible. далее, shouldBy(text())
+
+open("/", AuthenticationType.BASIC,
+            new BasicAuthCredentials("user", "password")); - авторизация
+
+            Selenide.back() кнопка назад
+            Selenide.refresh() обновить
+
+ Selenide.clearBrowserCookies(); очистить куки
+    Selenide.clearBrowserLocalStorage();очистить локальную историю
+       executeJavaScript("sessionStorage.clear();")
+
+        Selenide.confirm();"Подветрдить" используется для системных диалогов(например, оповезение об уведомлении)
+           Selenide.dismiss(); "Отменить"
+
+           Selenide.closeWindow(); закрыть АКТИВНОЕ окно
+               Selenide.closeWebDriver(); закрыть браузер (все окна)
+
+               elenide.switchTo().frame("new"); перейти по имени или айди
+                   Selenide.switchTo().defaultContent();
+
+   $("div", 2).click(); // поиск по второму диву. начинается с 0
+   $x("//h1/div").click();
+       $(byXpath("//h1/div")).click(); поиск по икспасу
+
+       $(byText("full text")).click(); поиск по полному тексту
+           $(withText("ull tex")).click(); поиск по тексту по пол строки
+
+           $(byTagAndText("div","full text"));
+               $(withTagAndText("div","ull text"));
+
+     $("").parent(); переходит на один уровень выше
+         $("").sibling(1); ищет сверху вниз
+         $("").preceding(1); ищет снизу вверх
+         $("").closest("div");
+         $("").ancestor("div"); // the same as closest
+         $("div:last-child"); псевоселекторы найти последний элемент
+
+          $("div").$("h1").find(byText("abc")).click();
+
+          // very optional
+              $(byAttribute("abc", "x")).click();
+              $("[abc=x]").click();
+
+              $(byId("mytext")).click();
+              $("#mytext").click();
+
+              $(byClassName("red")).click();
+              $(".red").click();
+
+   void actions_examples() {
+       $("").click();
+       $("").doubleClick();
+       $("").contextClick();
+
+       $("").hover(); подвести мышку
+
+       $("").setValue("text"); полностью очищает и заполняет
+       $("").append("text"); не очищает
+       $("").clear();
+       $("").setValue(""); // clear
+
+       $("div").sendKeys("c"); //  нажать кливишу на конкретном элементе
+       actions().sendKeys("c").perform(); //hotkey c on whole application вызвать последовательность действий
+       actions().sendKeys(Keys.chord(Keys.CONTROL, "f")).perform(); // Ctrl + F
+       $("html").sendKeys(Keys.chord(Keys.CONTROL, "f")); (chord -одноверенно)
+
+       $("").pressEnter();
+       $("").pressEscape();
+       $("").pressTab();
+
+
+           actions().moveToElement($("div")).clickAndHold().moveByOffset(300, 200).release().perform(); перевести курсор по координатам
+
+           // old html actions don't work with many modern frameworks
+           $("").selectOption("dropdown_option"); для дропдаун меню
+           $("").selectRadio("radio_options");
+
+         }
+
+         void assertions_examples() {
+           $("").shouldBe(visible);успешно,если видимый
+           $("").shouldNotBe(visible); успешно, есл эелмент невидимый
+           $("").shouldHave(text("abc"));
+           $("").shouldNotHave(text("abc"));
+           $("").should(appear);
+           $("").shouldNot(appear);
+
+
+                  //longer timeouts
+                  $("").shouldBe(visible, Duration.ofSeconds(30)); таймаут для элементов
+
+
+  void conditions_examples() {
+    $("").shouldBe(visible);
+    $("").shouldBe(hidden);
+
+    $("").shouldHave(text("abc"));
+    $("").shouldHave(exactText("abc")); полное совпадение
+    $("").shouldHave(textCaseSensitive("abc"));
+    $("").shouldHave(exactTextCaseSensitive("abc"));
+    $("").should(matchText("[0-9]abc$"));
+
+    $("").shouldHave(cssClass("red"));
+    $("").shouldHave(cssValue("font-size", "12")); проверяет физические свойства элемента
+
+    $("").shouldHave(value("25")); проверяем поле ввода
+    $("").shouldHave(exactValue("25"));
+    $("").shouldBe(empty);
+
+    $("").shouldHave(attribute("disabled"));
+    $("").shouldHave(attribute("name", "example"));
+    $("").shouldHave(attributeMatching("name", "[0-9]abc$"));
+
+    $("").shouldBe(checked); // for checkboxes
+
+      // Warning! Only checks if it is in DOM, not if it is visible! You don't need it in most tests!
+        $("").should(exist); что находится в дом.видимсый или невидимый
+
+        // Warning! Checks only the "disabled" attribute! Will not work with many modern frameworks
+        $("").shouldBe(disabled); воздействия на кнопки
+        $("").shouldBe(enabled);
+      }
+
+      void collections_examples() {
+
+        $$("div"); // does nothing!
+
+        // selections
+        $$("div").filterBy(text("123")).shouldHave(size(1)); фильтры
+        $$("div").excludeWith(text("123")).shouldHave(size(1)); удалются элементы с .. ""
+
+        $$("div").first().click();
+        elements("div").first().click();
+        // $("div").click();
+        $$("div").last().click();
+        $$("div").get(1).click(); // the second! (start with 0)
+        $("div", 1).click(); // same as previous
+        $$("div").findBy(text("123")).click(); //  finds first
+
+        // assertions
+        $$("").shouldHave(size(0));
+        $$("").shouldBe(CollectionCondition.empty); // the same
+
+        $$("").shouldHave(texts("Alfa", "Beta", "Gamma"));
+        $$("").shouldHave(exactTexts("Alfa", "Beta", "Gamma"));
+
+        $$("").shouldHave(textsInAnyOrder("Beta", "Gamma", "Alfa"));
+        $$("").shouldHave(exactTextsCaseSensitiveInAnyOrder("Beta", "Gamma", "Alfa"));
+
+        $$("").shouldHave(itemWithText("Gamma")); // only one text
+
+        $$("").shouldHave(sizeGreaterThan(0));
+        $$("").shouldHave(sizeGreaterThanOrEqual(1));
+        $$("").shouldHave(sizeLessThan(3));
+        $$("").shouldHave(sizeLessThanOrEqual(2));
+
+
+      }
+
+      void file_operation_examples() throws FileNotFoundException {
+
+        File file1 = $("a.fileLink").download(); // only for <a href=".."> links
+        File file2 = $("div").download(DownloadOptions.using(FileDownloadMode.FOLDER)); // more common options, but may have problems with Grid/Selenoid
+
+        File file = new File("src/test/resources/readme.txt");
+        $("#file-upload").uploadFile(file);
+        $("#file-upload").uploadFromClasspath("readme.txt");
+        // don't forget to submit!
+        $("uploadButton").click();
+      }
+
+      void javascript_examples() {
+        executeJavaScript("alert('selenide')");
+        executeJavaScript("alert(arguments[0]+arguments[1])", "abc", 12);
+        long fortytwo = executeJavaScript("return arguments[0]*arguments[1];", 6, 7);
+
+
+ Есть ли разница между $("h1 div"); и $("h1").$("div"); - может ли привести к тому что, поиск найдёт разные элементы?
+        Относительно первого вопроса. Думаю, что опечатались.
+        Селектор $("h1 div") как раз-таки найдет div, тогда как $("h1").$("div") сначала найдет первый h1 и уже будет искать непосредственно в нем. Тк в нем span, а не div, то элемент найден не будет

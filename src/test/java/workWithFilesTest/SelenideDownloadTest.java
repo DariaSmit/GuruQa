@@ -1,4 +1,4 @@
-package workWithFiles;
+package workWithFilesTest;
 
 import com.codeborne.pdftest.PDF;
 import com.codeborne.pdftest.matchers.ContainsExactText;
@@ -7,7 +7,6 @@ import com.codeborne.xlstest.XLS;
 import com.opencsv.CSVReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.io.Zip;
 
 
 import java.io.*;

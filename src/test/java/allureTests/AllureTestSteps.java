@@ -39,7 +39,7 @@ public class AllureTestSteps {
         step("Перейти в вкладку Issue", ()->{
             $("#issues-tab").click();
         });
-        step("Проверить что существует Ussue с номером" + IssueNumber, ()->{
+        step("Проверить что существует Issue с номером" + IssueNumber, ()->{
             $(withText("#1")).click();
         });
 

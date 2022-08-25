@@ -1,4 +1,4 @@
-package params;
+package paramsTest;
 
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.*;
