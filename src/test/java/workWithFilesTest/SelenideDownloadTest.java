@@ -4,12 +4,17 @@ import com.codeborne.pdftest.PDF;
 import com.codeborne.pdftest.matchers.ContainsExactText;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.xlstest.XLS;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.opencsv.CSVReader;
+import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import workWithFilesTest.domain.Teacher;
 
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -73,18 +78,41 @@ public class SelenideDownloadTest {
                     new String[]{"Oleg", "Egorov"},
                     new String[]{"Nick", "Summer"});
         }
+    }
+
+    @Test
+    void zipParsingTest() throws Exception {
+        ZipFile zf = new ZipFile(new File("src/test/resources/cat.zip"));
+        ZipInputStream is = new ZipInputStream(cl.getResourceAsStream("cat.zip"));
+        ZipEntry entry;
+        while ((entry = is.getNextEntry()) != null) {
+            org.assertj.core.api.Assertions.assertThat(entry.getName()).isEqualTo("GingerFatCat");
+            try (InputStream inputStream = zf.getInputStream(entry)) {
+            }
+        }
+    }
+
+    @Test
+    void JSON() throws Exception {
+        Gson gson = new Gson();
+        try (InputStream stream = cl.getResourceAsStream("simple.json")) {
+            String json = new String(stream.readAllBytes(), StandardCharsets.UTF_8);
+            JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
+            assertThat(jsonObject.get("name").getAsString()).isEqualTo("Daria");
+            assertThat(jsonObject.get("address").getAsJsonObject().get("street").getAsString()).isEqualTo("lou");
+        }
 
     }
+
     @Test
-    void zipParsingTest () throws Exception {
-        ZipFile zf = new ZipFile(new File("src/test/resources/cat.zip"));
-        ZipInputStream is = new ZipInputStream( cl.getResourceAsStream("cat.zip"));
-        ZipEntry entry;
-        while((entry = is.getNextEntry()) != null) {
-            org.assertj.core.api.Assertions.assertThat(entry.getName()).isEqualTo("GingerFatCat");
-            try ( InputStream inputStream = zf.getInputStream(entry)){
-                       }
-                 }
-          }
+    void JSON2() throws Exception {
+        Gson gson = new Gson();
+        try (InputStream stream = cl.getResourceAsStream("simple.json")) {
+            String json = new String(stream.readAllBytes(), StandardCharsets.UTF_8);
+            Teacher jsonObject = gson.fromJson(json, (Type) Teacher.class);
+            assertThat(jsonObject.name).isEqualTo("Daria");
+            assertThat(jsonObject.address.street).isEqualTo("lou");
+        }
     }
+}
 
