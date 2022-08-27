@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 import com.opencsv.CSVReader;
 import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import workWithFilesTest.domain.Teacher;
 
@@ -22,6 +23,7 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 
 import static com.codeborne.selenide.Selenide.$;
+import static java.lang.Thread.sleep;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,6 +31,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class SelenideDownloadTest {
     ClassLoader cl = SelenideDownloadTest.class.getClassLoader();
 
+    @Disabled
     @Test
     void downloadTest() throws Exception {
 
